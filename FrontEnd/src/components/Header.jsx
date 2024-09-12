@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from './Navbar'
 import { MdMenu, MdClose } from "react-icons/md";
@@ -7,6 +7,7 @@ import { LuUser2 } from "react-icons/lu";
 import { FaCircleUser } from "react-icons/fa6";
 import { FiPackage } from "react-icons/fi";
 import { TbLogout } from "react-icons/tb";
+import { ShopContext } from "../context/ShopContext";
 
 const Header = ({setShowLogin}) => {
   const [menuOpened, setMenuOpened] = useState(false);
@@ -14,6 +15,7 @@ const Header = ({setShowLogin}) => {
   const [header, setHeader] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const {getTotalCartItems} = useContext(ShopContext)
 
   const toggleMenu = () => {
     setMenuOpened(!menuOpened);
@@ -75,7 +77,7 @@ const Header = ({setShowLogin}) => {
             )}
             <Link to={'/cart'} className="flex relative">
               <GiShoppingBag className="text-[25px]" />
-              <span className="bg-white text-tertiary text-sm absolute -right-2.5 -top-2.5 flexCenter w-5 h-5 rounded-full shadow-md">0</span>
+              <span className="bg-white text-tertiary text-sm absolute -right-2.5 -top-2.5 flexCenter w-5 h-5 rounded-full shadow-md">{getTotalCartItems()}</span>
             </Link>
             {!token ? (
               <button onClick={() => setShowLogin(true)} className="btn-light rounded-full flexCenter gap-x-2">

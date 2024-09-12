@@ -12,7 +12,7 @@ import Cart from './pages/cart'
 
 const App = () => {
 
-  const [showLogin, setShowLogin] = useState(true)
+  const [showLogin, setShowLogin] = useState(false)
 
   return (
     <div className='overflow-hidden text-[#404040]'>

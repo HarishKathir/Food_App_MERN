@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {FaMinus,FaPlus} from 'react-icons/fa6'
+import { ShopContext } from '../context/ShopContext';
 
 const Item = ({product}) => {
 
-  const [cartItems,setCartItems] = useState(0);
+  const {cartItems,addToCart,removeFromCart} = useContext(ShopContext);
 
   return (
     <div className='ring-1 ring-slate-900/5 rounded-xl'>
@@ -21,9 +22,9 @@ const Item = ({product}) => {
         <div className='flex flex-col gap-2 medium-14'>
           <h5>Servings</h5>
           <div className='bg-primary rounded-sm flexBetween gap-2'>
-            <FaMinus onClick={() => setCartItems(prev => prev-1)} className='bg-primary h-5 w-5 p-1 cursor-pointer rounded-sm'/>
-            <p>{cartItems}</p>
-            <FaPlus onClick={() => setCartItems(prev => prev+1)} className='bg-secondary text-white h-5 w-5 p-1 cursor-pointer rounded-sm'/>
+            <FaMinus onClick={() => removeFromCart(product._id)} className='bg-primary h-5 w-5 p-1 cursor-pointer rounded-sm'/>
+            <p>{cartItems[product._id] > 0 ? cartItems[product._id] : 0}</p>
+            <FaPlus onClick={() => addToCart(product._id)} className='bg-secondary text-white h-5 w-5 p-1 cursor-pointer rounded-sm'/>
           </div>
         </div>
         <hr className='w-[1px] h-12 bg-slate-900/20 '/>
