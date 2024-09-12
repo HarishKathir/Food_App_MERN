@@ -10,13 +10,15 @@ const Hero = () => {
      {/* left */}
      <div className='flex-1 pt-48 max-w-[611px]'>
       <h2 className='h1 capitalize tracking-[1px]'>
-        Delicious Meals Delivered Right <span>to Your Doorstep</span>
+        Delicious Meals Delivered Right <span className='xl:text-secondary'>to Your Doorstep</span>
       </h2>
       <p className='pt-4 pb-14'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti a cupiditate dolorem illo, quasi unde temporibus.</p>
       <div className='inline-flex flex-col xs:flex-row xs:items-center gap-3'>
         <Link className='btn-secondary rounded-full !px-12'>Order Now</Link>
-        <Link className='btn-outline rounded-full !px-12 flexCenter gap-x-3'>Explore Menu</Link>
-        <FaArrowRightLong />
+        <Link className='btn-outline rounded-full !px-12 flexCenter gap-x-3'>
+          Explore Menu
+          <FaArrowRightLong />
+        </Link>
       </div>
      </div>
      {/* right */}

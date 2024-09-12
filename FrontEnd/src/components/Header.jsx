@@ -8,7 +8,7 @@ import { FaCircleUser } from "react-icons/fa6";
 import { FiPackage } from "react-icons/fi";
 import { TbLogout } from "react-icons/tb";
 
-const Header = () => {
+const Header = ({setShowLogin}) => {
   const [menuOpened, setMenuOpened] = useState(false);
   const [token, setToken] = useState(false);
   const [header, setHeader] = useState(false);
@@ -78,7 +78,7 @@ const Header = () => {
               <span className="bg-white text-tertiary text-sm absolute -right-2.5 -top-2.5 flexCenter w-5 h-5 rounded-full shadow-md">0</span>
             </Link>
             {!token ? (
-              <button className="btn-light rounded-full flexCenter gap-x-2">
+              <button onClick={() => setShowLogin(true)} className="btn-light rounded-full flexCenter gap-x-2">
                 <LuUser2 className="bold-18" />
                 Login
               </button>
