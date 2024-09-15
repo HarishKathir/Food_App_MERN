@@ -3,6 +3,7 @@ import cors from 'cors'
 import {} from 'dotenv/config'
 import {connectDB} from './config/db.js'
 import productRouter from "./routes/productRoute.js"
+import userRouter from "./routes/userRoute.js"
 
 
 //app config
@@ -18,7 +19,8 @@ connectDB()
 
 
 //api endPoints
-app.use("/api/product",productRouter)
+app.use("/api/product",productRouter);
+app.use("/api/user",userRouter);
 app.use("/images",express.static('uploads'))
 
 app.get('/',(req,res) => {
