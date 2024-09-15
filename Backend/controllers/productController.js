@@ -2,7 +2,6 @@ import productModel from "../models/ProductModel.js";
 import fs from 'fs'
 
 //add product item
-
 const addProduct = async(req,res) => {
     let image_filename = `${req.file.filename}`
 
@@ -16,10 +15,10 @@ const addProduct = async(req,res) => {
 
     try{
         await product.save()
-        res.json({sucess:true,message:"Product Addedd"})
+        res.json({success:true,message:"Product Addedd"})
     }catch(error){
         console.log(error);
-        res.json({sucess:false,message:"Error"})
+        res.json({success:false,message:"Error"})
     }
 };
 
@@ -27,10 +26,10 @@ const addProduct = async(req,res) => {
 const listProduct = async(req,res) => {
     try {
         const products = await productModel.find({})
-        res.json({sucess:true,data:products})
+        res.json({success:true,data:products})
     } catch (error) {
         console.log(error);
-        res.json({sucess:false,message:"Error"})
+        res.json({success:false,message:"Error"})
     }
 }
 
@@ -41,10 +40,10 @@ const removeProduct = async(req,res) => {
        fs.unlink(`uploads/${product.image}`,()=>{})
 
        await productModel.findByIdAndDelete(req.body.id); 
-       res.json({sucess:true,message:"Product Removed"})
+       res.json({success:true,message:"Product Removed"})
     } catch (error) {
         console.log(error);
-        res.json({sucess:false,message:"Error"})
+        res.json({success:false,message:"Error"})
     }
 }
 
