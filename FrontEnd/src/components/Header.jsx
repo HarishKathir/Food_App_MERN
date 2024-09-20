@@ -11,11 +11,10 @@ import { ShopContext } from "../context/ShopContext";
 
 const Header = ({setShowLogin}) => {
   const [menuOpened, setMenuOpened] = useState(false);
-  const [token, setToken] = useState(false);
   const [header, setHeader] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const {getTotalCartItems} = useContext(ShopContext)
+  const {getTotalCartItems,token,setToken} = useContext(ShopContext)
 
   const toggleMenu = () => {
     setMenuOpened(!menuOpened);
@@ -88,12 +87,12 @@ const Header = ({setShowLogin}) => {
               <div className="group -relative">
                 <FaCircleUser className="text-2xl" />
                 <ul className="bg-primary shadow-sm p-3 w-24 ring-1 ring-slate-900/15 rounded absolute right-0 hidden group-hover:flex flex-col">
-                  <li onClick={() => Navigate("/myorders")} className="flexCenter gap-x-2 cursor-pointer">
+                  <li onClick={() => navigate("/myorders")} className="flexCenter gap-x-2 cursor-pointer">
                     <FiPackage className="text-[19px]" />
                     <p>orders</p>
                   </li>
                   <hr className="my-2"/>
-                  <li onClick={() => Navigate("/myorders")} className="flexCenter gap-x-2 cursor-pointer">
+                  <li onClick={logout} className="flexCenter gap-x-2 cursor-pointer">
                     <TbLogout className="text-[19px]" />
                     <p>Logout</p>
                   </li>

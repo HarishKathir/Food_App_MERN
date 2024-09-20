@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
 
-  const {all_products,cartItems,addTocart, removeFromCart,getTotalCartAmount} = useContext(ShopContext);
+  const {all_products,cartItems, removeFromCart,getTotalCartAmount,URL} = useContext(ShopContext);
   const navigate = useNavigate();
 
   return (
@@ -28,7 +28,7 @@ const Cart = () => {
                 return(
                   <tr key={product._id} className='border-b border-slate-900/20 text-gray-50 p-6 medium-14 text-left'> 
                   <td className='p-1'>
-                    <img src={product.image} alt="Product Image" height={43} width={43} className='rounded-lg ring-1 ring-slate-900/5 m-1'/>
+                    <img src={URL+"/images/"+product.image} alt="Product Image" height={43} width={43} className='rounded-lg ring-1 ring-slate-900/5 m-1'/>
                   </td>
                   <td className='p-1'>
                     <div className='line-clamp-3'>

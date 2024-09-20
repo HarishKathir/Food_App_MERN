@@ -5,12 +5,12 @@ import { ShopContext } from '../context/ShopContext';
 
 const Item = ({product}) => {
 
-  const {cartItems,addToCart,removeFromCart} = useContext(ShopContext);
+  const {cartItems,addToCart,removeFromCart,URL} = useContext(ShopContext);
 
   return (
     <div className='ring-1 ring-slate-900/5 rounded-xl'>
       <Link to={""} className='flexCenter p-4 ring-1 ring-slate-200/20 bg-white rounded-xl'>
-        <img src={product.image} alt="product_image" height={222} width={222} className='object-contain aspect-square rounded-xl'/>
+        <img src={URL+"/images/"+product.image} alt="product_image" height={222} width={222} className='object-contain aspect-square rounded-xl'/>
       </Link>
       {/* title and description */}
       <div className='p-3 bg-primary'>

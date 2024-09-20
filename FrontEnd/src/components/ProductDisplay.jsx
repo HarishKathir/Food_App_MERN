@@ -18,7 +18,7 @@ const ProductDisplay = ({category}) => {
         {all_products.map((product) => {
           if(category === "All" || category === product.category){
             return(
-              <div key={product.id}>
+              <div key={product._id}>
                 <Item product={product} />
               </div>
             )
