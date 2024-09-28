@@ -9,7 +9,7 @@ const ShopContextProvider = (props) => {
   const [token,setToken] = useState("");
   const [all_products,setall_products] = useState([]);
 
-  const [cartItems,setCartItems] = useState({});
+  const [cartItems,setCartItems] = useState([]);
 
   const addToCart = async(itemId) => {
     if(!cartItems[itemId]){
@@ -29,7 +29,7 @@ const ShopContextProvider = (props) => {
     }
   }
 
-  const getCartItems = async() =>{
+  const getCartItems = async(token) =>{
     const response = await axios.post(URL+"/api/cart/get",{},{headers:{token}});
     setCartItems(response.data.cartData);
   }
@@ -69,7 +69,6 @@ const ShopContextProvider = (props) => {
     loadData(); 
   }, [])
   
-
   const contextValue = {all_products, cartItems, setCartItems , addToCart, removeFromCart, getTotalCartItems, getTotalCartAmount,URL,token,setToken}
 
   return (

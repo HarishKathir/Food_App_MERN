@@ -23,7 +23,7 @@ const Item = ({product}) => {
           <h5>Servings</h5>
           <div className='bg-primary rounded-sm flexBetween gap-2'>
             <FaMinus onClick={() => removeFromCart(product._id)} className='bg-primary h-5 w-5 p-1 cursor-pointer rounded-sm'/>
-            <p>{cartItems[product._id] > 0 ? cartItems[product._id] : 0}</p>
+            <p>{cartItems[product._id]>0 ? cartItems[product._id]: 0}</p>
             <FaPlus onClick={() => addToCart(product._id)} className='bg-secondary text-white h-5 w-5 p-1 cursor-pointer rounded-sm'/>
           </div>
         </div>
