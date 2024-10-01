@@ -9,7 +9,7 @@ const Cart = () => {
   const navigate = useNavigate();
 
   return (
-    <section className='max-padd-container pt-20'>
+    <section className='max-padd-container pt-20 py-4'>
       <div className='py=10'>
         <table className='w-full'>
           <thead>

@@ -1,6 +1,6 @@
 import orderModel from "../models/orderModel.js";
 import userModel from '../models/userModel.js'
-import { Stripe } from "stripe"
+import Stripe  from "stripe"
 
 const stripe  = new Stripe(process.env.STRIPE_SECRET_KEY);
 const frontend_url = 'http://localhost:5173'
@@ -16,16 +16,15 @@ const placeOrder = async(req,res) =>{
         await newOrder.save()
         await userModel.findByIdAndUpdate(req.body.userId,{cartData:{}});
 
-        const line_items = req.body.items.map(() =>({
+        const line_items = req.body.items.map((item) =>({
             price_data : {
                 currency : "inr",
                 product_data:{
                     name:item.name,
                 },
-                unit_amount:item.price*85,
-                quantity : item.quantity
-
-            } 
+                unit_amount:item.price*85*10,
+            },
+            quantity : item.quantity 
         }))
 
         line_items.push({
@@ -34,9 +33,9 @@ const placeOrder = async(req,res) =>{
                 product_data:{
                     name:"Delivery Charges"
                 },
-                unit_amount:2*85,
-                quantity:1
-            }
+                unit_amount:2*100*85,
+            },
+            quantity:1
         })
 
         const session = await stripe.checkout.sessions.create({
@@ -53,4 +52,15 @@ const placeOrder = async(req,res) =>{
     }
 }
 
-export {placeOrder}
+const verifyOrder = async(req,res) => {
+    const [orderId,success] = req.body;
+    try {
+        if(success === true){
+        
+        }  
+    } catch (error) {
+        
+    }
+}
+
+export {placeOrder,verifyOrder}
