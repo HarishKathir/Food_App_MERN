@@ -7,7 +7,7 @@ import Home from './pages/Home'
 import Product from './pages/Product'
 import Myorder from './pages/Myorder'
 import Order from './pages/Order'
-import Verify from './pages/verify'
+import Verify from './pages/Verify'
 import Cart from './pages/cart'
 
 const App = () => {

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -54,6 +54,13 @@ const Order = () => {
     // console.log(orderData);
   };
 
+  useEffect(()=>{
+    if(!token){
+      navigate("/cart");
+    }else if(getTotalCartAmount() === 0 ){
+      navigate("/cart");
+    }
+  },[token])
   return (
     <div className="max-padd-container py-28 xl:py-32 ">
       <form
