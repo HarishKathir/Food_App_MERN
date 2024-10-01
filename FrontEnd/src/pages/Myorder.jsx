@@ -40,7 +40,7 @@ const Myorder = () => {
           </thead>
           <tbody>
             {data.map((order,i) => (
-              <tr key={i} className='border-b border-slate-900/20 text-gray-400 p-6 medium-14 text-left'>
+              <tr key={i} className='border-b border-slate-900/20 text-gray-50 p-6 medium-14 text-left'>
                 <td className='p-1 hidden sm:table-cell'><FaBox className='text-2xl text-secondary' /></td>
                 <td className='p-1 '>
                    <p>{order.items.map((item,index) =>{
@@ -62,7 +62,7 @@ const Myorder = () => {
                   </p>
                 </td>
                 <td className="p-1">
-                  <button className='btn-white rounded-sm'>Track</button>
+                  <button onClick={fetchUserOrders} className='btn-white rounded-sm'>Track</button>
                 </td>
               </tr>
             ))}
